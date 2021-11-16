@@ -12,3 +12,6 @@ Principales fonctionnalités :
     * différents algorithmes de calcul
   - proposer une interface utilisateur : sélection de la scène, du moteur, rendu final
   - avoir la possibilité de facilement rajouter des moteurs de rendu différents, des objets plus complexes (en forme, en textures, dans leurs interactions avec la lumière)
+
+Choix de la librairie de rendu 2D : SDL2 car plutôt simple, et accès au GPU
+Accélération de calcul : OpenCL1.x en combinaison avec des API comme Boost.Compute, Intel CLU, **SYCL** pour faciliter le codage.

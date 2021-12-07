@@ -19,14 +19,14 @@ namespace
         Point intersec;
 
         // get the nearest intersection point, if it exists
-            for (int it =0; it < Spheres.size(); it++)
-            {
-                intersec = ray.intersection(Spheres[it]);
+        for (int it = 0; it < Spheres.size(); it++)
+        {
+            intersec = ray.intersection(Spheres[it]);
 
-                int dist = intersec.distance(ray.origin);
-                if (dist < distance)
-                    nearest = &Spheres[it], distance = dist;
-            }
+            int dist = intersec.distance(ray.origin);
+            if (dist < distance)
+                nearest = &Spheres[it], distance = dist;
+        }
 
         if (!nearest)
             return BG_COLOR;
@@ -49,6 +49,7 @@ namespace
         }
         else
         {
+            //TO-DO : créer des rayons dans x directions pour calculer la couleur par diffusion
         }
 
         return surface_color + nearest->emissionColor;

@@ -12,7 +12,6 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 #set source files
 set (SOURCE_FILES src/main.cpp)
 
-add_library (TestLib src/test.cpp)
 
 
 #we add the executable of the program
@@ -20,4 +19,3 @@ add_executable (in204_oort ${SOURCE_FILES})
 
 find_package(SFML 2.5.1 COMPONENTS system graphics audio network REQUIRED)
 target_link_libraries(in204_oort PRIVATE sfml-audio sfml-graphics sfml-network sfml-system)
-target_link_libraries(in204_oort PUBLIC TestLib)

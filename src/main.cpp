@@ -1,40 +1,14 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
-#include "test.hpp"
+#include "Representation.hpp"
+#include "Engine.hpp"
+#include <string>
+
+std::string ressources_path = "/Users/achille/Documents/Cours2A/IN204/IN204_OORT/resources";
 
 int main()
 {
-    test();
-
-#if defined(_DEBUG)
-    std::cout << "Hello World!" << std::endl;
-#endif
-
-    sf::RenderWindow window;
-    window.create(sf::VideoMode(200, 200), "SFML works!");
-
-    sf::CircleShape shape(window.getSize().x / 2);
-    shape.setFillColor(sf::Color::White);
-
-    sf::Texture shapeTexture;
-    shapeTexture.loadFromFile("resources/sfml.png");
-    shape.setTexture(&shapeTexture);
-
-    sf::Event event;
-
-    while (window.isOpen())
-    {
-        while (window.pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed)
-                window.close();
-        }
-
-        window.clear();
-        window.draw(shape);
-        window.display();
-    }
-
+    load_from_json(ressources_path + "/test_object.json");
     return 0;
 }

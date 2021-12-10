@@ -14,15 +14,15 @@ public:
     m_values->at(2) = Vector(0);
   }
   Matrix(Vector e1, Vector e2, Vector e3) {
-    m_values->at(0) = (e1);
-    m_values->at(1) = (e2);
-    m_values->at(2) = (e3);
+    m_values->at(0) = {e1.x, e2.x, e3.x};
+    m_values->at(1) = {e1.y, e2.y, e3.y};
+    m_values->at(2) = {e1.z, e2.z, e3.z};
   }
 
   void set(const Vector &e1, const Vector &e2, const Vector &e3) {
-    m_values->at(0) = e1;
-    m_values->at(1) = e2;
-    m_values->at(2) = e3;
+    m_values->at(0) = {e1.x, e2.x, e3.x};
+    m_values->at(1) = {e1.y, e2.y, e3.y};
+    m_values->at(2) = {e1.z, e2.z, e3.z};
   }
 
   Vector operator*(const Vector &vec) {

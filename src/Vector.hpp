@@ -1,7 +1,7 @@
 #pragma once
-#include <SFML/System.hpp>
+
 #include <cmath>
-using namespace sf;
+#include <ostream>
 
 // class Vector : public Vector3<double>
 // {
@@ -58,7 +58,7 @@ public:
   Vector operator*(const double &f) const { return {x * f, y * f, z * f}; }
 
   Vector operator*(const Vector &v) const {
-    return {x * v.x, y * v.y, z * v.z};
+    return Vector({x * v.x, y * v.y, z * v.z});
   }
 
   Vector operator/(const double &scalar) const {

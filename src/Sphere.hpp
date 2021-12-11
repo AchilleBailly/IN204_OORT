@@ -15,7 +15,7 @@ public:
   // reefraction
   Sphere(double rad, Vector c, Vector p, double t, double r, double i = 1.0,
          Vector ec = 0)
-      : Object3D(p, c, r, t, i, ec), radius(r) {}
+      : Object3D(p, c, r, t, i, ec), radius(rad) {}
 
   virtual bool intersection(const Ray &ray, const double &t_min,
                             const double &t_max,
@@ -27,6 +27,7 @@ public:
     double delta = ps * ps - (norm_tmp2 - radius * radius);
 
     if (delta <= 0) {
+      // std::cout << ray << "\n" << *this;
       return false;
     } else {
       double t1 = -ps - sqrt(delta);

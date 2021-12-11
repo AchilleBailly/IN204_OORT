@@ -37,7 +37,7 @@ public:
 
   friend std::ostream &operator<<(std::ostream &os, Matrix mat) {
     auto it = mat.m_values->begin();
-    std::cout << "[" << *(it++) << ",\n" << *(it++) << ",\n" << *(it++) << "]";
+    os << "[" << *(it++) << ",\n" << *(it++) << ",\n" << *(it++) << "]";
     return os;
   }
 };

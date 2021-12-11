@@ -10,7 +10,7 @@ public:
   double t = 0;
   Vector hit_point = 0;
   Vector normal = 0;
-  std::shared_ptr<Object3D> obj_hit = NULL;
+  Object3D *obj_hit = NULL;
 
   Hit_record() {}
 

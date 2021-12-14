@@ -1,16 +1,16 @@
 #pragma once
 
 #include "Object3D.hpp"
-#include "Vector.hpp"
 #include <cstddef>
-#include <memory>
 
 class Hit_record {
 public:
   double t = 0;
   Vector hit_point = 0;
   Vector normal = 0;
-  Object3D *obj_hit = NULL;
+  shared_ptr<Object3D> obj_hit = NULL;
+  bool inside_hit;
+  Vector color; // if no scattering
 
   Hit_record() {}
 

@@ -1,38 +1,27 @@
 #pragma once
 
-#include "Vector.hpp"
 #include "json.hpp"
+#include "utils.hpp"
+#include <algorithm>
+#include <memory>
 using json = nlohmann::json;
-#include "Vector.hpp"
-#include <SFML/Graphics.hpp>
 #include <fstream>
-#include <iostream>
 #include <string>
 
 class Vector;
 class Ray;
 class Hit_record;
+class Material;
 
 class Object3D {
 public:
-  Vector color;
-  Vector orientation;
   Vector position;
-  double reflectance;
-  double transparence;
-  double indice_refraction;
-  Vector emissionColor;
+  shared_ptr<Material> material;
 
-  Object3D()
-      : color(), orientation(), position(), reflectance(1), transparence(0),
-        indice_refraction(0) {}
-  Object3D(const Vector &p, Vector c, double r, double t, double i, Vector ec)
-      : color(c), orientation(), position(p), reflectance(r), transparence(t),
-        indice_refraction(i), emissionColor(ec) {}
-  Object3D(const Vector &p, const Vector &v, Vector c, double r, double t,
-           double i)
-      : color(c), orientation(v), position(p), reflectance(r), transparence(t),
-        indice_refraction(i) {}
+  Object3D() : position(), material() {}
+  Object3D(const Vector &p, shared_ptr<Material> Material) : position(p) {
+    material = Material;
+  }
 
   virtual ~Object3D() {}
 

@@ -2,13 +2,8 @@
 
 #include "Matrix.hpp"
 #include "Object3D_list.hpp"
-#include "Ray.hpp"
 #include "Sphere.hpp"
-#include "Vector.hpp"
-#include <cmath>
 #include <functional>
-#include <ostream>
-#include <vector>
 
 class Camera {
 
@@ -34,7 +29,7 @@ public:
          unsigned Height_p, double Distance_to_screen = 1)
       : distance_to_screen(Distance_to_screen), position(Position),
         orientation(Orientation), width_p(Width_p), height_p(Height_p),
-        fov(FOV * acos(-1) / (double)180) {
+        fov(degrees_to_radians(FOV)) {
     orientation.normalize();
 
     aspect_ratio = width_p / (double)height_p;
@@ -57,6 +52,7 @@ public:
          const Object3D_list &objs, const int &depth) {
     std::vector<Vector> res(width_p * height_p);
 
+    std::cout << "test\n";
     for (int i = 0; i < height_p; i++) {
       for (int j = 0; j < width_p; j++) {
         Ray ray(useful, (*this).get_dir(i, j));

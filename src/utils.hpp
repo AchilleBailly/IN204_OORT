@@ -7,6 +7,11 @@
 #include <memory>
 #include <ostream>
 
+// Common Headers
+
+#include "Ray.hpp"
+#include "Vector.hpp"
+
 // Usings
 
 using std::make_shared;
@@ -23,10 +28,5 @@ const double pi = 3.1415926535897932385;
 inline double degrees_to_radians(double degrees) {
   return degrees * pi / 180.0;
 }
-
-// Common Headers
-
-#include "Ray.hpp"
-#include "Vector.hpp"
 
 #endif

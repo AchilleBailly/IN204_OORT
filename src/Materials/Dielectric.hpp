@@ -1,7 +1,7 @@
 #pragma once
 
+#include "../Object3D.hpp"
 #include "Material.hpp"
-#include "Object3D.hpp"
 
 class Transparent : public Material {
 public:

@@ -1,10 +1,8 @@
 #include "Camera.hpp"
-#include "Dielectric.hpp"
 #include "Engine.hpp"
-#include "Metal.hpp"
+#include "Materials.hpp"
 #include "Object3D_list.hpp"
 #include "Sphere.hpp"
-#include "TestMaterial.hpp"
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 #include <memory>
@@ -35,7 +33,7 @@ void print_vector(std::ostream &out, std::vector<Vector> color, size_t width_p,
 }
 
 Object3D_list scene1() {
-  shared_ptr<Transparent> glass = make_shared<Transparent>(1.5, 0.05);
+  shared_ptr<Transparent> glass = make_shared<Transparent>(1.0, 0.05);
   shared_ptr<TestMaterial> red = make_shared<TestMaterial>(Vector(1, 0, 0));
   shared_ptr<Metal> metal = make_shared<Metal>(Vector(0.8, 0.6, 0.2), 1);
 

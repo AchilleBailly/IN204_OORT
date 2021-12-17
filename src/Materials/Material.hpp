@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Hit_record.hpp"
-#include "utils.hpp"
+#include "../Hit_record.hpp"
+#include "../utils.hpp"
 
 class Material {
 public:

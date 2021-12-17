@@ -1,8 +1,8 @@
 #pragma once
 
+#include "../Object3D.hpp"
+#include "../Vector.hpp"
 #include "Material.hpp"
-#include "Object3D.hpp"
-#include "Vector.hpp"
 #include <vector>
 
 class TestMaterial : public Material {

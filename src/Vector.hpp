@@ -85,6 +85,11 @@ public:
     return *this;
   }
 
+  Vector &operator/=(const double &v) {
+    x /= v, y /= v, z /= v;
+    return *this;
+  }
+
   Vector operator-() const { return Vector(-x, -y, -z); }
 
   friend std::ostream &operator<<(std::ostream &os, const Vector &v) {
@@ -101,5 +106,20 @@ public:
             x * vec.y - y * vec.x};
   }
 
+  friend Vector pow(const Vector &vec, double exp) {
+    return Vector(pow(vec.x, exp), pow(vec.y, exp), pow(vec.z, exp));
+  }
+
+  friend Vector exp(const Vector &vec) {
+    return {exp(vec.x), exp(vec.y), exp(vec.z)};
+  }
+
   double distance(const Vector &vec) { return (vec - *this).norm(); }
+
+  bool near_zero(double bias) {
+    if ((*this).norm2() < bias) {
+      return true;
+    }
+    return false;
+  }
 };

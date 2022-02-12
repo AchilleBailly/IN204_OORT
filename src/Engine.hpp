@@ -149,10 +149,11 @@ struct Engines {
       else
         return hit.color;
 
-      return surface_color;
+      return surface_color / ray_list.size();
     }
 
-    double t = 0.5 * (ray.direction.y + 1.0);
-    return (1 - t) * Vector(1, 1, 1) + t * Vector(0.5, 0.7, 1.0);
+    // double t = 0.5 * (ray.direction.y + 1.0);
+    // return (1 - t) * Vector(1, 1, 1) + t * Vector(0.5, 0.7, 1.0);
+    return {0, 0, 0};
   }
 };

@@ -1,1 +1,1 @@
-Checks: 'modernize'
+Checks: 'modernize,-p build/compile_commands.json'

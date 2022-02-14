@@ -8,6 +8,7 @@ class Ray : public Vector {
 public:
   Vector origin;
   Vector direction;
+  Vector attenuation;
 
   Ray() : origin(), direction() {}
   Ray(const Vector &ori, const Vector &dir) : origin(ori), direction(dir) {

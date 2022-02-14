@@ -1,10 +1,6 @@
 #pragma once
 #include "Hit_record.hpp"
-#include "Object3D.hpp"
-#include "Ray.hpp"
-#include <memory>
 #include <sys/types.h>
-#include <vector>
 
 using std::shared_ptr;
 
@@ -27,12 +23,13 @@ inline bool Object3D_list::intersection(const Ray &ray, const double &t_min,
                                         Hit_record &hit_record) const {
   Hit_record temp;
   temp.t = t_max;
+  hit_record = temp;
   bool res = false;
   for (const auto &obj : objects) {
-    if (obj->intersection(ray, t_min, temp.t, temp)) {
+    if (obj->intersection(ray, t_min, hit_record.t, temp)) {
       res = true;
+      temp.obj_hit = obj;
       hit_record = temp;
-      hit_record.obj_hit = obj.get();
     }
   }
   return res;

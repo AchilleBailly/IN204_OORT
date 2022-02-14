@@ -1,7 +1,6 @@
 #pragma once
 
-#include "Vector.hpp"
-#include <iostream>
+#include "utils.hpp"
 #include <vector>
 
 class Matrix {

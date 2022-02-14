@@ -73,6 +73,7 @@ public:
         res.at(i) += raytracer(ray, objs, depth);
       }
       res.at(i) /= nb_samples;
+      res.at(i) = pow(res.at(i), 1. / 2.);
     }
 
     return res;

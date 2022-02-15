@@ -15,7 +15,15 @@ public:
   virtual bool intersection(const Ray &ray, const double &t_min,
                             const double &t_max,
                             Hit_record &hit_record) const override;
-  virtual void update_hit(const Ray &ray, Hit_record &hit) const override {}
+  virtual void update_hit(const Ray &, Hit_record &) const override {}
+
+  shared_ptr<Object3D> getObjectByLabel(const QString& label){
+      for(auto it = objects.begin(); it != objects.end(); it ++){
+          if(label == (*it)->label)
+               return *it;
+      }
+      return nullptr;
+  }
 };
 
 inline bool Object3D_list::intersection(const Ray &ray, const double &t_min,

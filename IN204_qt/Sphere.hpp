@@ -43,10 +43,10 @@ public:
 
   virtual void update_hit(const Ray &ray, Hit_record &hit) const override;
 
-  friend std::ostream &operator<<(std::ostream &os, const Sphere &s) {
+  friend QDebug operator<<(QDebug os, const Sphere &s) {
     os << "[Sphere object]\n"
-       << "Radius : " << s.radius << std::endl
-       << "Position : " << s.position << std::endl;
+       << "Radius : " << s.radius
+       << "Position : " << s.position;
     return os;
   }
 };

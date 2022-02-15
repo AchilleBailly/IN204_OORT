@@ -4,12 +4,10 @@
 #include "Material.hpp"
 
 class Diffuse : public Material {
-  Vector albedo;
-
 public:
   Diffuse(Vector color) : albedo(color) {}
 
-  virtual bool scatter(const Ray &r_in, Hit_record &rec,
+  virtual bool scatter(const Ray &, Hit_record &rec,
                        std::vector<Ray> &scattered) override {
     Vector dir = rec.normal + random_unit_sphere().normalize();
     if (dir.near_zero(1e-5))
@@ -20,4 +18,6 @@ public:
     rec.color = 2 * albedo * rec.normal.dot(dir);
     return true;
   }
+
+  Vector albedo;
 };

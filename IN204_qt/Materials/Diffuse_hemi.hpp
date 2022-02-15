@@ -10,7 +10,7 @@ class Diffuse_hemi : public Material {
 public:
   Diffuse_hemi(Vector color) : albedo(color) {}
 
-  virtual bool scatter(const Ray &r_in, Hit_record &rec,
+  virtual bool scatter(const Ray &, Hit_record &rec,
                        std::vector<Ray> &scattered) override {
     Vector rand = random_unit_sphere().normalize();
     Vector dir = ((rand.dot(rec.normal) < 0) ? -1 : 1) * rand;

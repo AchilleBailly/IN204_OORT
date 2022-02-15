@@ -10,7 +10,7 @@ public:
   Diffuse_create(Vector color, int Rays_created)
       : albedo(color), nb_ray_created(Rays_created) {}
 
-  virtual bool scatter(const Ray &ray, Hit_record &hit_record,
+  virtual bool scatter(const Ray &, Hit_record &hit_record,
                        std::vector<Ray> &ray_list) override {
     for (int i = 0; i < nb_ray_created; i++) {
       Ray scattered(hit_record.hit_point, random_hemisphere(hit_record.normal));

@@ -11,8 +11,8 @@ public:
 
   TestMaterial(Vector Color) : color(Color) {}
 
-  virtual bool scatter(const Ray &ray, Hit_record &hit,
-                       std::vector<Ray> &scattered) {
+  virtual bool scatter(const Ray &, Hit_record &hit,
+                       std::vector<Ray> &) {
     hit.color = color;
     return false;
   }

@@ -2,6 +2,7 @@
 
 #include <cmath>
 #include <ostream>
+#include <QDebug>
 
 // class Vector : public Vector3<double>
 // {
@@ -92,7 +93,7 @@ public:
 
   Vector operator-() const { return Vector(-x, -y, -z); }
 
-  friend std::ostream &operator<<(std::ostream &os, const Vector &v) {
+  friend QDebug operator<<(QDebug os, const Vector &v) {
     os << "[" << v.x << ", " << v.y << ", " << v.z << "]";
     return os;
   }

@@ -1,3 +1,4 @@
+#include "temp.hpp"
 #include "Camera.hpp"
 #include "Engine.hpp"
 #include "Materials.hpp"
@@ -10,8 +11,6 @@
 #include "TimeMeasure.hpp"
 #include "Vector.hpp"
 #include "utils.hpp"
-#include <SFML/Graphics.hpp>
-#include <SFML/Window.hpp>
 #include <memory>
 
 using std::make_shared;
@@ -80,7 +79,7 @@ Object3D_list scene2() {
 std::string ressources_path =
     "/Users/achille/Documents/Cours2A/IN204/IN204_OORT/resources";
 
-int main() {
+int temp() {
   // load_from_json(ressources_path + "/test_object.json");
   // position, oriention, fov (degrees), width in pixels, height in pixels,
   // distance camera to screen

@@ -8,6 +8,7 @@
 #include <cmath>
 #include <memory>
 #include <vector>
+#include <QDebug>
 
 struct Engines {
   static double mix(const double &a, const double &b, const double &mix) {
@@ -109,7 +110,7 @@ struct Engines {
   // }
 
   static Vector ray_trace2(const Ray &ray, const Object3D_list &objs,
-                           const int &depth) {
+                           const int &) {
     Hit_record hit_record;
 
     // get the obj_hit intersection point, if it exists
@@ -118,7 +119,7 @@ struct Engines {
       Vector surface_color(0);
 
       Vector normal = hit_record.normal;
-      std::cout << "Normal to hit point : " << normal << "\n";
+      qDebug() << "Normal to hit point : " << normal << "\n";
       Vector intersec = hit_record.hit_point;
 
       return 0.5 * Vector(normal.x + 1, normal.y + 1, normal.z + 1);

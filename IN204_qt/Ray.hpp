@@ -64,9 +64,9 @@ public:
   //     return -P.orientation;
   // }
 
-  friend std::ostream &operator<<(std::ostream &os, const Ray &ray) {
+  friend QDebug operator<<(QDebug os, const Ray &ray) {
     os << "[Ray object]\n";
-    os << "Origin : " << ray.origin << "\n";
+    os << "Origin : " << ray.origin ;
     os << "Direction : " << ray.direction;
     return os;
   }

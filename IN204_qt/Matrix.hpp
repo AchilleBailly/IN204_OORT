@@ -34,7 +34,7 @@ public:
     return {x, y, z};
   }
 
-  friend std::ostream &operator<<(std::ostream &os, Matrix mat) {
+  friend QDebug operator<<(QDebug os, Matrix mat) {
     auto it = mat.m_values->begin();
     os << "[" << *(it++) << ",\n" << *(it++) << ",\n" << *(it++) << "]";
     return os;

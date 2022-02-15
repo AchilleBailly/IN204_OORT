@@ -17,6 +17,7 @@ class Object3D {
 public:
   Vector position;
   shared_ptr<Material> material;
+  QString label;
 
   Object3D() : position(), material() {}
   Object3D(const Vector &p, shared_ptr<Material> Material) : position(p) {
@@ -30,6 +31,10 @@ public:
                             Hit_record &hit_record) const = 0;
 
   virtual void update_hit(const Ray &ray, Hit_record &hit) const = 0;
+
+  void setLabel(const QString& Label) {label = Label;}
+
+   friend QDebug operator<<(QDebug, const Object3D &);
 };
 
 inline void load_from_json(std::string file_name) {
@@ -38,5 +43,4 @@ inline void load_from_json(std::string file_name) {
 
   json j;
   input >> j;
-  std::cout << j;
 }

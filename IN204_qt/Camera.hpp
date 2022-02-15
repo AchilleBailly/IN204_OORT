@@ -1,5 +1,6 @@
 #pragma once
 
+#include "temp.hpp"
 #include "Matrix.hpp"
 #include "Object3D_list.hpp"
 #include "Sphere.hpp"
@@ -7,7 +8,8 @@
 #include <functional>
 #include <omp.h>
 #include <ostream>
-#include <tbb/tbb.h>
+//#include <tbb/tbb.h>
+
 
 class Camera {
 
@@ -22,6 +24,7 @@ class Camera {
   double aspect_ratio;
   double pixel_size;
   int nb_samples = 1;
+  std::vector<Vector> res;
 
 public:
   Matrix P;
@@ -46,6 +49,8 @@ public:
     tmp.normalize();
     Vector tmp2 = orientation.vectoriel(tmp);
     P.set(tmp, tmp2, orientation);
+
+    res.resize(width_p*height_p,Vector(0));
   }
 
   void set_number_samples(int n) { nb_samples = n; }
@@ -59,55 +64,52 @@ public:
   render(std::function<Vector(const Ray &, const Object3D_list &, const int &)>
              raytracer,
          const Object3D_list &objs, const int &depth) {
-    std::vector<Vector> res(width_p * height_p);
-
 #pragma omp parallel for num_threads(16)
-    for (int i = 0; i < height_p * width_p; i++) {
-      // if (i == 0) {
-      //   std::cout << omp_get_num_threads() << "\n";
-      // }
+        for (unsigned i = 0; i < height_p * width_p; i++) {
+            if (i == 0) {
+                qDebug() << omp_get_num_threads() << "\n";
+            }
       // std::cout << "(" << i << "/" << height_p * width_p << ")";
       // std::cout << "\n";
-      for (int k = 0; k < nb_samples; k++) {
-        Ray ray(useful, (*this).get_dir_rand(i / width_p, i % width_p));
-        res.at(i) += raytracer(ray, objs, depth);
-      }
-      res.at(i) /= nb_samples;
-      res.at(i) = pow(res.at(i), 1. / 2.);
+            for (int k = 0; k < nb_samples; k++) {
+                Ray ray(useful, (*this).get_dir_rand(i / width_p, i % width_p));
+                res.at(i) += raytracer(ray, objs, depth);
+            }
+            res.at(i) /= nb_samples;
+            res.at(i) = pow(res.at(i), 1. / 2.);
+        }
+        return res;
     }
 
-    return res;
-  }
-
-  std::vector<Vector> render_tbb(
-      std::function<Vector(const Ray &, const Object3D_list &, const int &)>
-          raytracer,
-      const Object3D_list &objs, const int &depth) {
-    std::vector<Vector> res(width_p * height_p);
-    // auto partitioner = tbb::simple_partitioner();
-    auto partitioner = tbb::auto_partitioner();
-    tbb::parallel_for(
-        tbb::blocked_range2d<unsigned, unsigned>(0, width_p, 4, 0, height_p, 4),
-        [&](tbb::blocked_range2d<unsigned, unsigned> const &r) {
-          // int thread_limit = oneapi::tbb::global_control::active_value(
-          //     oneapi::tbb::global_control::max_allowed_parallelism);
-          // assert(thread_limit == MAX_NUM_THREADS);
-          //  On parcourt les pixels du sous-block de l'image dans l'espace
-          //  image :
-          for (auto i = r.cols().begin(); i < r.cols().end(); ++i) {
-            for (auto j = r.rows().begin(); j < r.rows().end(); ++j) {
-              for (int k = 0; k < nb_samples; k++) {
-                Ray ray(useful, (*this).get_dir_rand(i, j));
-                res.at(j + i * width_p) += raytracer(ray, objs, depth);
-              }
-              res.at(j + i * width_p) /= nb_samples;
-              res.at(j + i * width_p) = pow(res.at(j + i * width_p), 1. / 2.);
-            }
-          }
-        },
-        partitioner);
-    return res;
-  }
+//  std::vector<Vector> render_tbb(
+//      std::function<Vector(const Ray &, const Object3D_list &, const int &)>
+//          raytracer,
+//      const Object3D_list &objs, const int &depth) {
+//    std::vector<Vector> res(width_p * height_p);
+//    // auto partitioner = tbb::simple_partitioner();
+//    auto partitioner = tbb::auto_partitioner();
+//    tbb::parallel_for(
+//        tbb::blocked_range2d<unsigned, unsigned>(0, width_p, 4, 0, height_p, 4),
+//        [&](tbb::blocked_range2d<unsigned, unsigned> const &r) {
+//          // int thread_limit = oneapi::tbb::global_control::active_value(
+//          //     oneapi::tbb::global_control::max_allowed_parallelism);
+//          // assert(thread_limit == MAX_NUM_THREADS);
+//          //  On parcourt les pixels du sous-block de l'image dans l'espace
+//          //  image :
+//          for (auto i = r.cols().begin(); i < r.cols().end(); ++i) {
+//            for (auto j = r.rows().begin(); j < r.rows().end(); ++j) {
+//              for (int k = 0; k < nb_samples; k++) {
+//                Ray ray(useful, (*this).get_dir_rand(i, j));
+//                res.at(j + i * width_p) += raytracer(ray, objs, depth);
+//              }
+//              res.at(j + i * width_p) /= nb_samples;
+//              res.at(j + i * width_p) = pow(res.at(j + i * width_p), 1. / 2.);
+//            }
+//          }
+//        },
+//        partitioner);
+//    return res;
+//  }
 
   // from the coordinates of the pixels, return the direction of the ray going
   // through that pixel
@@ -131,16 +133,16 @@ public:
     return dir;
   }
 
-  friend std::ostream &operator<<(std::ostream &os, const Camera &cam) {
-    os << "Position : " << cam.position << std::endl;
-    os << "Orientation : " << cam.orientation << std::endl;
-    os << "Width pixels : " << cam.width_p << std::endl;
-    os << "Height pixels : " << cam.height_p << std::endl;
-    os << "Aspect ratio : " << cam.aspect_ratio << std::endl;
-    os << "FOV : " << cam.fov * 180 / acos(-1) << std::endl;
-    os << "Virtual height : " << cam.height << std::endl;
-    os << "Virtual width : " << cam.width << std::endl;
-    os << "Pixel size : " << cam.pixel_size << std::endl;
+  friend QDebug operator<<(QDebug os, const Camera &cam) {
+    os << "Position : " << cam.position ;
+    os << "Orientation : " << cam.orientation ;
+    os << "Width pixels : " << cam.width_p ;
+    os << "Height pixels : " << cam.height_p ;
+    os << "Aspect ratio : " << cam.aspect_ratio ;
+    os << "FOV : " << cam.fov * 180 / acos(-1) ;
+    os << "Virtual height : " << cam.height ;
+    os << "Virtual width : " << cam.width ;
+    os << "Pixel size : " << cam.pixel_size ;
     return os;
   }
 };

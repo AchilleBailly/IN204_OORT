@@ -134,15 +134,17 @@ public:
   }
 
   friend QDebug operator<<(QDebug os, const Camera &cam) {
-    os << "Position : " << cam.position ;
-    os << "Orientation : " << cam.orientation ;
-    os << "Width pixels : " << cam.width_p ;
-    os << "Height pixels : " << cam.height_p ;
-    os << "Aspect ratio : " << cam.aspect_ratio ;
-    os << "FOV : " << cam.fov * 180 / acos(-1) ;
-    os << "Virtual height : " << cam.height ;
-    os << "Virtual width : " << cam.width ;
-    os << "Pixel size : " << cam.pixel_size ;
+    os << "Position : " << cam.position << "\n" ;
+    os << "Position 2 :" << cam.useful<< "\n" ;
+    os << "Matrice de passage : " << cam.P;
+    os << "Orientation : " << cam.orientation << "\n" ;
+    os << "Width pixels : " << cam.width_p << "\n" ;
+    os << "Height pixels : " << cam.height_p << "\n" ;
+    os << "Aspect ratio : " << cam.aspect_ratio << "\n" ;
+    os << "FOV : " << cam.fov * 180 / acos(-1) << "\n" ;
+    os << "Virtual height : " << cam.height << "\n" ;
+    os << "Virtual width : " << cam.width << "\n" ;
+    os << "Pixel size : " << cam.pixel_size;
     return os;
   }
 };

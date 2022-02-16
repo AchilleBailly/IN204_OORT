@@ -277,6 +277,31 @@
        </layout>
       </item>
       <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_7">
+        <item>
+         <widget class="QLineEdit" name="lineJsonFileName">
+          <property name="placeholderText">
+           <string>Enter file name to save/load the list</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="buttonLoadJson">
+          <property name="text">
+           <string>Load Obj. list</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="buttonSaveJson">
+          <property name="text">
+           <string>Save Obj. list</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
        <layout class="QHBoxLayout" name="horizontalLayout_2">
         <item alignment="Qt::AlignBottom">
          <widget class="QPushButton" name="buttonRender">

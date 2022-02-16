@@ -34,13 +34,9 @@ public:
 
   void setLabel(const QString& Label) {label = Label;}
 
-   friend QDebug operator<<(QDebug, const Object3D &);
+  friend QDebug operator<<(QDebug, const Object3D &);
+
+  virtual json to_json() = 0;
 };
 
-inline void load_from_json(std::string file_name) {
-  std::fstream input;
-  input.open(file_name);
 
-  json j;
-  input >> j;
-}

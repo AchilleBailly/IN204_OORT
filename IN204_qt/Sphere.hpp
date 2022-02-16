@@ -1,7 +1,9 @@
 #pragma once
 
 #include "Hit_record.hpp"
+#include "Materials.hpp"
 #include <memory>
+
 
 class Sphere : public Object3D {
 public:
@@ -49,6 +51,8 @@ public:
        << "Position : " << s.position;
     return os;
   }
+
+  virtual json to_json() override;
 };
 
 inline void Sphere::update_hit(const Ray &ray, Hit_record &hit) const {
@@ -61,4 +65,15 @@ inline void Sphere::update_hit(const Ray &ray, Hit_record &hit) const {
   } else {
     hit.inside_hit = false;
   }
+}
+
+inline json Sphere::to_json() {
+    json out;
+    out = {
+        {"label", this->label.toStdString()},
+        {"radius", this->radius},
+        {"positionX", this->position.to_json()},
+        {"material", this->material.get()->to_json()}
+    };
+    return out;
 }

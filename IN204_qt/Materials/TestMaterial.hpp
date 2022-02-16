@@ -16,4 +16,12 @@ public:
     hit.color = color;
     return false;
   }
+
+  virtual json to_json() override {
+      json out = {
+        {"type", "testmaterial"},
+        {"color", color.to_json()}
+      };
+      return out;
+  }
 };

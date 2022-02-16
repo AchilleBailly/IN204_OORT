@@ -3,6 +3,7 @@
 #include <cmath>
 #include <ostream>
 #include <QDebug>
+#include "json.hpp"
 
 // class Vector : public Vector3<double>
 // {
@@ -122,5 +123,15 @@ public:
       return true;
     }
     return false;
+  }
+
+  using json = nlohmann::json;
+  json to_json() {
+      json out = {
+          {"x", x},
+          {"y", y},
+          {"z", z}
+      };
+      return out;
   }
 };

@@ -20,4 +20,12 @@ public:
   }
 
   Vector albedo;
+
+  virtual json to_json() override {
+      json out = {
+          {"type", "diffuse"},
+          {"albedo", albedo.to_json()}
+      };
+      return out;
+  }
 };

@@ -26,6 +26,15 @@ public:
     return Ray(hit.hit_point, dir);
   }
 
+  virtual json to_json() override {
+      json out = {
+          {"type", "metal"},
+          {"fuzz", fuzz},
+          {"albedo", albedo.to_json()}
+      };
+      return out;
+  }
+
 public:
   Vector albedo;
   double fuzz;

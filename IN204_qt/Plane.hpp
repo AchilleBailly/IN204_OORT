@@ -1,6 +1,8 @@
 #pragma once
 
 #include "Hit_record.hpp"
+#include "Materials.hpp"
+#include "json.hpp"
 
 struct Plane : public Object3D {
   Vector orientation;
@@ -30,5 +32,16 @@ struct Plane : public Object3D {
     hit.normal =
         (orientation.dot(ray.direction) < 0) ? orientation : -orientation;
     hit.hit_point = hit.t * ray.direction + ray.origin;
+  }
+
+  virtual json to_json() override {
+      json out = {
+          {"type", "plane"},
+          {"label", label.toStdString()},
+          {"position", position.to_json()},
+          {"orientation", orientation.to_json()},
+          {"material", material.get()->to_json()}
+      };
+      return out;
   }
 };

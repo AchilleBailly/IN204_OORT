@@ -72,4 +72,15 @@ public:
     ret = (reflectivity + (1.0 - reflectivity) * ret);
     return ret;
   }
+
+  virtual json to_json() override {
+      json out;
+      out = {
+          {"type", "transparent"},
+          {"ior", ior},
+          {"reflectivity", reflectivity},
+          {"absorption", absorption.to_json()}
+      };
+      return out;
+  }
 };

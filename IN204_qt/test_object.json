@@ -1,0 +1,18 @@
+{
+    "objs": [
+        {
+            "Sphere": {
+                "radius": 1,
+                "x": 0,
+                "y": 0,
+                "z": 0,
+                "material": "transparent",
+                "ior": 1.5,
+                "reflectivity": 0.2,
+                "absorptionR": 0.0,
+                "absorptionG": 0.0,
+                "absorptionB": 0.0
+            }
+        }
+    ]
+}

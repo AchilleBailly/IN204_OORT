@@ -39,6 +39,8 @@ private slots:
 
     void on_buttonRender_clicked();
 
+    void on_buttonSaveJson_clicked();
+
 private:
     Ui::MainWindow *ui;
     QGraphicsScene *scene;

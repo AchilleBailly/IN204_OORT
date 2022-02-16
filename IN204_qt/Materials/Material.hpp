@@ -10,4 +10,6 @@ public:
 
   Material() {}
   virtual ~Material() {}
+
+  virtual json to_json() = 0;
 };

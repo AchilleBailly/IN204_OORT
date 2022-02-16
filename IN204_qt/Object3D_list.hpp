@@ -1,5 +1,6 @@
 #pragma once
 #include "Hit_record.hpp"
+#include "json.hpp"
 #include <sys/types.h>
 
 using std::shared_ptr;
@@ -24,6 +25,20 @@ public:
       }
       return nullptr;
   }
+
+  virtual json to_json() override {
+      std::vector<json> jsonlist;
+      for(auto it = objects.begin(); it != objects.end(); it++) {
+          jsonlist.push_back((*it)->to_json());
+      }
+      json out = jsonlist;
+      return out;
+  }
+
+  void load_from_json(std::string file_name) {
+    std::fstream input;
+    input.open(file_name);
+  }
 };
 
 inline bool Object3D_list::intersection(const Ray &ray, const double &t_min,
@@ -42,3 +57,5 @@ inline bool Object3D_list::intersection(const Ray &ray, const double &t_min,
   }
   return res;
 }
+
+

@@ -13,6 +13,8 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     scene = new QGraphicsScene;
     result.resize(1,Vector(0));
+
+    objs.load_from_json("test_object.json");
 }
 
 MainWindow::~MainWindow()
@@ -116,6 +118,8 @@ void MainWindow::on_buttonRender_clicked()
     Camera test_cam({posx, posy, posz}, {orienx, orieny, orienz}, fov, width, height);
     test_cam.set_number_samples(smprate);
 
+    qDebug() << test_cam;
+
     Engines engines;
     TimeMeasuring t2;
     t2.setStart();
@@ -123,5 +127,18 @@ void MainWindow::on_buttonRender_clicked()
     t2.setEnd();
 
     qDebug() << "Temps de calcul " << t2.getAverageDuration().count();
+}
+
+
+void MainWindow::on_buttonSaveJson_clicked()
+{
+    auto fileName = ui->lineJsonFileName->text().toStdString();
+    std::ofstream output(fileName);
+    if(!output){
+        Error("Please make sure you have entered the right file name.");
+        return;
+    }
+
+    output << std::setw(4) << objs.to_json() << std::endl;
 }
 

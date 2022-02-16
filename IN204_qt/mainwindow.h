@@ -41,6 +41,8 @@ private slots:
 
     void on_buttonSaveJson_clicked();
 
+    void on_buttonLoadJson_clicked();
+
 private:
     Ui::MainWindow *ui;
     QGraphicsScene *scene;

@@ -142,3 +142,23 @@ void MainWindow::on_buttonSaveJson_clicked()
     output << std::setw(4) << objs.to_json() << std::endl;
 }
 
+
+void MainWindow::on_buttonLoadJson_clicked()
+{
+    auto fileName = ui->lineJsonFileName->text().toStdString();
+    std::ifstream in(fileName);
+    if(!in){
+        Error("Please make sure you have entered the right file name.");
+        return;
+    }
+
+    json input;
+    in >> input;
+    try {
+        objs.from_json(input);
+    }  catch (const json::exception& e) {
+        Error("Json file containing the list is corrupted.");
+        return;
+    }
+}
+

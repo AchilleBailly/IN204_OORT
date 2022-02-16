@@ -1,5 +1,7 @@
 #pragma once
 #include "Hit_record.hpp"
+#include "Sphere.hpp"
+#include "Plane.hpp"
 #include "json.hpp"
 #include <sys/types.h>
 
@@ -34,6 +36,63 @@ public:
       json out = jsonlist;
       return out;
   }
+
+    void from_json(json input) {
+        std::vector<json> list = input.get<std::vector<json>>();
+        try {
+            for(auto it = list.begin(); it != list.end(); it ++){
+                json jobj = (*it);
+                std::ofstream out("test.json");
+                out << std::setw(4) << jobj << std::endl;
+                json jpos = jobj["position"];
+                json jmat = jobj["material"];
+                shared_ptr<Object3D> obj;
+                shared_ptr<Material> mat;
+                Vector position = {jpos["x"].get<double>(), jpos["y"].get<double>(), jpos["z"].get<double>()};
+                auto label = jobj["label"].get<std::string>();
+
+                // Cases on the type of material
+                if(jmat["type"].get<std::string>() == "transparent"){
+                    json jabso = jmat["absorption"];
+                    Vector absorption = {jabso["x"].get<double>(), jabso["y"].get<double>(), jabso["z"].get<double>()};
+                    double ior = jmat["ior"].get<double>();
+                    double reflectivity = jmat["reflectivity"].get<double>();
+                    mat= make_shared<Transparent>(ior, reflectivity, absorption);
+                }
+                else if(jmat["type"].get<std::string>() == "diffuse") {
+                    json jalbe = jmat["albedo"];
+                    Vector albedo = {jalbe["x"].get<double>(), jalbe["y"].get<double>(), jalbe["z"].get<double>()};
+                    mat = make_shared<Diffuse>(albedo);
+                }
+                else if(jmat["type"].get<std::string>() == "metal") {
+                    double fuzz = jmat["fuzz"].get<double>();
+                    json jalbe = jmat["albedo"];
+                    Vector albedo = {jalbe["x"].get<double>(), jalbe["y"].get<double>(), jalbe["z"].get<double>()};
+                    mat = make_shared<Metal>(albedo, fuzz);
+                }
+                else if(jmat["type"].get<std::string>() == "lightsource") {
+                    json jalbe = jmat["color"];
+                    Vector albedo = {jalbe["x"].get<double>(), jalbe["y"].get<double>(), jalbe["z"].get<double>()};
+                    mat = make_shared<LightSource>(albedo);
+                }
+
+                // Cases on the type of the object added
+                if(jobj["type"].get<std::string>() == "Sphere") {
+                    double radius = jobj["radius"].get<double>();
+                    obj = make_shared<Sphere>(radius, position, mat);
+                }
+                else if(jobj["type"].get<std::string>() == "Plane"){
+                    json jorient = jobj["orientation"];
+                    Vector orientation = {jorient["x"].get<double>(), jorient["y"].get<double>(), jorient["z"].get<double>()};
+                    obj = make_shared<Plane>(position, orientation, mat);
+                }
+                obj.get()->setLabel(QString::fromStdString(label));
+                this->add(obj);
+            }
+        }  catch (const json::exception &e) {
+            throw e;
+        }
+    }
 
   void load_from_json(std::string file_name) {
     std::fstream input;

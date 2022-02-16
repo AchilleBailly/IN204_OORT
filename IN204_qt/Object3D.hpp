@@ -37,6 +37,8 @@ public:
   friend QDebug operator<<(QDebug, const Object3D &);
 
   virtual json to_json() = 0;
+
+  //virtual shared_ptr<Object3D> from_json() = 0;
 };
 
 

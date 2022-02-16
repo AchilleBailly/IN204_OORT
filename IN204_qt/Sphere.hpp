@@ -53,6 +53,8 @@ public:
   }
 
   virtual json to_json() override;
+
+  shared_ptr<Sphere> from_json(json input);
 };
 
 inline void Sphere::update_hit(const Ray &ray, Hit_record &hit) const {
@@ -70,10 +72,12 @@ inline void Sphere::update_hit(const Ray &ray, Hit_record &hit) const {
 inline json Sphere::to_json() {
     json out;
     out = {
+        {"type","Sphere"},
         {"label", this->label.toStdString()},
         {"radius", this->radius},
-        {"positionX", this->position.to_json()},
+        {"position", this->position.to_json()},
         {"material", this->material.get()->to_json()}
     };
     return out;
 }
+

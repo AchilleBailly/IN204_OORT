@@ -45,7 +45,7 @@ public:
     height = width / aspect_ratio;
     pixel_size = (double)height / height_p;
 
-    Vector tmp{-orientation.z, 0, orientation.x};
+    Vector tmp = orientation.vectoriel({0,1,0});
     tmp.normalize();
     Vector tmp2 = orientation.vectoriel(tmp);
     P.set(tmp, tmp2, orientation);
@@ -117,7 +117,7 @@ public:
   Vector get_dir(const int &i, const int &j) {
     Vector p_position_rel(((j + 0.5) * pixel_size - width / 2),
                           ((i + 0.5) * pixel_size - height / 2), 0);
-    Vector dir = P * p_position_rel - useful;
+    Vector dir = P * p_position_rel - useful + position;
     return dir;
   }
 
@@ -129,7 +129,7 @@ public:
     double dj = random_double(0, 1);
     Vector p_position_rel(((j + di) * pixel_size - width / 2),
                           ((i + dj) * pixel_size - height / 2), 0);
-    Vector dir = P * p_position_rel - useful;
+    Vector dir = P * p_position_rel - useful + position;
     return dir;
   }
 

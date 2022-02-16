@@ -61,6 +61,10 @@ public:
     QHBoxLayout *horizontalLayout_3;
     QPushButton *buttonAddObject;
     QPushButton *buttonUpdateList;
+    QHBoxLayout *horizontalLayout_7;
+    QLineEdit *lineJsonFileName;
+    QPushButton *buttonLoadJson;
+    QPushButton *buttonSaveJson;
     QHBoxLayout *horizontalLayout_2;
     QPushButton *buttonRender;
     QLineEdit *lineEdit;
@@ -234,6 +238,26 @@ public:
 
         verticalLayout->addLayout(horizontalLayout_3);
 
+        horizontalLayout_7 = new QHBoxLayout();
+        horizontalLayout_7->setObjectName(QString::fromUtf8("horizontalLayout_7"));
+        lineJsonFileName = new QLineEdit(centralwidget);
+        lineJsonFileName->setObjectName(QString::fromUtf8("lineJsonFileName"));
+
+        horizontalLayout_7->addWidget(lineJsonFileName);
+
+        buttonLoadJson = new QPushButton(centralwidget);
+        buttonLoadJson->setObjectName(QString::fromUtf8("buttonLoadJson"));
+
+        horizontalLayout_7->addWidget(buttonLoadJson);
+
+        buttonSaveJson = new QPushButton(centralwidget);
+        buttonSaveJson->setObjectName(QString::fromUtf8("buttonSaveJson"));
+
+        horizontalLayout_7->addWidget(buttonSaveJson);
+
+
+        verticalLayout->addLayout(horizontalLayout_7);
+
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
         buttonRender = new QPushButton(centralwidget);
@@ -348,6 +372,9 @@ public:
         label->setText(QCoreApplication::translate("MainWindow", "List of the objects in the scene :", nullptr));
         buttonAddObject->setText(QCoreApplication::translate("MainWindow", "Add Object", nullptr));
         buttonUpdateList->setText(QCoreApplication::translate("MainWindow", "Update List", nullptr));
+        lineJsonFileName->setPlaceholderText(QCoreApplication::translate("MainWindow", "Enter file name to save/load the list", nullptr));
+        buttonLoadJson->setText(QCoreApplication::translate("MainWindow", "Load Obj. list", nullptr));
+        buttonSaveJson->setText(QCoreApplication::translate("MainWindow", "Save Obj. list", nullptr));
         buttonRender->setText(QCoreApplication::translate("MainWindow", "Render", nullptr));
         lineEdit->setPlaceholderText(QCoreApplication::translate("MainWindow", "Enter file name for the image.", nullptr));
         buttonLoad->setText(QCoreApplication::translate("MainWindow", "Load Image", nullptr));

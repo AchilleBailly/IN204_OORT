@@ -22,9 +22,17 @@ Accélération de calcul : OpenCL1.x en combinaison avec des API comme Boost.Com
 # Installation des bibliothèques
 J'ai d'abord essayé d'installer OpenCL pour pouvoir l'utiliser à travers ComputeCpp sur Windows, je n'ai pas réussi. 
 Je m'attellerai donc à l'accélération GPU plus tard. 
-J'ai ensuite tenté d'utiliser la SFML sur MacOS, avec difficultés, pour enfin y arriver grâce à CMake.
+J'ai ensuite tenté d'utiliser la SFML sur MacOS, avec difficultés, pour enfin y arriver grâce à CMake.  
+
+# Au final
+Ce README n'a au final plus été très mis à jour dès que j'ai commencé à coder réellement et à être absorber par le projet.  
+Niveau accélération, étant tout seul, je n'ai pas eu beaucoup de temps à passer dessus. J'ai juste utilisé OpenMP pour le côté pratique, pour attendre moins longtemps pendant les tests.  
 
 # Documentation
 Approches du Ray-Tracing :
-https://nguyen.univ-tln.fr/share/Infographie3D/trans_raytracing.pdf
-https://fr.wikipedia.org/wiki/Ray_tracing
+https://nguyen.univ-tln.fr/share/Infographie3D/trans_raytracing.pdf  
+https://fr.wikipedia.org/wiki/Ray_tracing  
+Livres très détaillés, surtout utilisés pour les maths et les différentes techniques propres aux Ray Tracers:  
+https://raytracing.github.io/?fbclid=IwAR2LReyLmO0Ht31oRNI6baadnGLjBMo7_N6YcZAVxliTx7flvyKDIPpYyTw  
+Les deux pages sur le Ray Tracing m'ont été très utiles pour comprendre plus en détail les concepts de matériaux diffus et d'absorbance :  
+https://blog.demofox.org  

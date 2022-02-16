@@ -5,7 +5,7 @@ Object oriented ray tracing project
 Pour la compilation, la librairie Qt 6.2 est nécessaire:  
 Avec Qt : qmake.exe IN204_qt.pro (dans IN204_qt)  
 Sinon (Windows) : mingw32-make.exe -j16 (dans /build-IN204_qt-Desktop_Qt_6_2_3_MinGW_64_bit-Release)  
-Ou encore (Linux) : make -j16 (dans 
+Ou encore (Linux) : make -j16 (dans /build-IN204_qt-Qt_6_2_3_gcc_64-Release)
 
 # Anlyse initiale
 Principales fonctionnalités :

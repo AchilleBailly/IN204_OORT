@@ -11,8 +11,6 @@ public:
 
   Sphere() : Object3D(), radius(0) {}
 
-  // radius, color (rgb), position, reflectance, transparence, indice of
-  // reefraction
   Sphere(double rad, Vector p, shared_ptr<Material> mat)
       : Object3D(p, mat), radius(rad) {}
 

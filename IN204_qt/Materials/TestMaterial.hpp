@@ -12,7 +12,7 @@ public:
   TestMaterial(Vector Color) : color(Color) {}
 
   virtual bool scatter(const Ray &, Hit_record &hit,
-                       std::vector<Ray> &) {
+                       std::vector<Ray> &) override {
     hit.color = color;
     return false;
   }

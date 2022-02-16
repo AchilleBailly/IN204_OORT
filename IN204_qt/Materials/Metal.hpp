@@ -13,11 +13,6 @@ public:
     reflected.direction = reflected.direction + fuzz * random_unit_sphere();
     scattered.push_back(reflected);
     scattered[0].attenuation = albedo;
-    // if (dir.dot(rec.normal) > 0) {
-    //   Ray scatte(rec.hit_point, dir);
-    //   scatte.attenuation = albedo;
-    //   scattered.push_back(scatte);
-    // }
     return true;
   }
 

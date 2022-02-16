@@ -162,3 +162,10 @@ void MainWindow::on_buttonLoadJson_clicked()
     }
 }
 
+
+void MainWindow::on_buttonEmpty_clicked()
+{
+    objs.objects.erase(objs.objects.begin(), objs.objects.end());
+    on_buttonUpdateList_clicked();
+}
+

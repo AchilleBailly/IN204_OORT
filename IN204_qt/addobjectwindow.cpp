@@ -51,6 +51,7 @@ void AddObjectWindow::setupOnModify(Sphere& s) {
         ui->lineAbsorptionR->setText(QString::number(glass.absorption.x));
         ui->lineAbsorptionG->setText(QString::number(glass.absorption.y));
         ui->lineAbsorptionB->setText(QString::number(glass.absorption.z));
+        ui->comboBox->setCurrentText("Transparent");
     } catch (const std::bad_cast& e){}
 
     try { // Metal material
@@ -58,6 +59,8 @@ void AddObjectWindow::setupOnModify(Sphere& s) {
         ui->lineMetalAlbedoR->setText(QString::number(m.albedo.x));
         ui->lineMetalAlbedoG->setText(QString::number(m.albedo.y));
         ui->lineMetalAlbedoB->setText(QString::number(m.albedo.z));
+        ui->lineFuzziness->setText(QString::number(m.fuzz));
+        ui->comboBox->setCurrentText("Metal");
     }  catch (const std::bad_cast& e) {}
 
     try { // Diffuse material
@@ -65,6 +68,7 @@ void AddObjectWindow::setupOnModify(Sphere& s) {
         ui->lineDiffuseR->setText(QString::number(d.albedo.x));
         ui->lineDiffuseG->setText(QString::number(d.albedo.y));
         ui->lineDiffuseB->setText(QString::number(d.albedo.z));
+        ui->comboBox->setCurrentText("Diffuse material");
     }  catch (const std::bad_cast& e) {}
 
     try { // Light Source
@@ -72,6 +76,7 @@ void AddObjectWindow::setupOnModify(Sphere& s) {
         ui->lineLightR->setText(QString::number(l.color.x));
         ui->lineLightG->setText(QString::number(l.color.y));
         ui->lineLightB->setText(QString::number(l.color.z));
+        ui->comboBox->setCurrentText("Light source");
     } catch(const std::bad_cast& e) {}
     // if no cast possible, dont fill anything
 }
@@ -117,7 +122,7 @@ void AddObjectWindow::on_buttonAddObject_clicked()
     else if(ui->comboBox->currentText() == "Metal"){
         double r = ui->lineMetalAlbedoR->text().toDouble();
         double g = ui->lineMetalAlbedoG->text().toDouble();
-        double b = ui->lineAbsorptionB->text().toDouble();
+        double b = ui->lineMetalAlbedoB->text().toDouble();
         double fuzz = ui->lineFuzziness->text().toDouble();
         if(validConversion && r >=0 && g >= 0 && b >= 0)
             material = make_shared<Metal>(Vector(r,g,b), fuzz);

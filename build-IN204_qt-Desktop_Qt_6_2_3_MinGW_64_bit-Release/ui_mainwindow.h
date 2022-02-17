@@ -59,6 +59,7 @@ public:
     QLabel *label;
     QListWidget *listWidget;
     QHBoxLayout *horizontalLayout_3;
+    QPushButton *buttonEmpty;
     QPushButton *buttonAddObject;
     QPushButton *buttonUpdateList;
     QHBoxLayout *horizontalLayout_7;
@@ -225,6 +226,11 @@ public:
 
         horizontalLayout_3 = new QHBoxLayout();
         horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
+        buttonEmpty = new QPushButton(centralwidget);
+        buttonEmpty->setObjectName(QString::fromUtf8("buttonEmpty"));
+
+        horizontalLayout_3->addWidget(buttonEmpty);
+
         buttonAddObject = new QPushButton(centralwidget);
         buttonAddObject->setObjectName(QString::fromUtf8("buttonAddObject"));
 
@@ -370,6 +376,7 @@ public:
         lineDepth->setText(QCoreApplication::translate("MainWindow", "5", nullptr));
         lineDepth->setPlaceholderText(QCoreApplication::translate("MainWindow", "Depth of recursion", nullptr));
         label->setText(QCoreApplication::translate("MainWindow", "List of the objects in the scene :", nullptr));
+        buttonEmpty->setText(QCoreApplication::translate("MainWindow", "Empty list", nullptr));
         buttonAddObject->setText(QCoreApplication::translate("MainWindow", "Add Object", nullptr));
         buttonUpdateList->setText(QCoreApplication::translate("MainWindow", "Update List", nullptr));
         lineJsonFileName->setPlaceholderText(QCoreApplication::translate("MainWindow", "Enter file name to save/load the list", nullptr));

@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MainWindow_t {
-    const uint offsetsAndSize[34];
-    char stringdata0[345];
+    const uint offsetsAndSize[36];
+    char stringdata0[368];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(offsetof(qt_meta_stringdata_MainWindow_t, stringdata0) + ofs), len 
@@ -45,7 +45,8 @@ QT_MOC_LITERAL(214, 27), // "on_buttonUpdateList_clicked"
 QT_MOC_LITERAL(242, 26), // "on_buttonSaveImage_clicked"
 QT_MOC_LITERAL(269, 23), // "on_buttonRender_clicked"
 QT_MOC_LITERAL(293, 25), // "on_buttonSaveJson_clicked"
-QT_MOC_LITERAL(319, 25) // "on_buttonLoadJson_clicked"
+QT_MOC_LITERAL(319, 25), // "on_buttonLoadJson_clicked"
+QT_MOC_LITERAL(345, 22) // "on_buttonEmpty_clicked"
 
     },
     "MainWindow\0on_pushButton_clicked\0\0"
@@ -57,7 +58,8 @@ QT_MOC_LITERAL(319, 25) // "on_buttonLoadJson_clicked"
     "on_buttonSaveImage_clicked\0"
     "on_buttonRender_clicked\0"
     "on_buttonSaveJson_clicked\0"
-    "on_buttonLoadJson_clicked"
+    "on_buttonLoadJson_clicked\0"
+    "on_buttonEmpty_clicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -67,7 +69,7 @@ static const uint qt_meta_data_MainWindow[] = {
       10,       // revision
        0,       // classname
        0,    0, // classinfo
-      11,   14, // methods
+      12,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -75,17 +77,18 @@ static const uint qt_meta_data_MainWindow[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    0,   80,    2, 0x08,    1 /* Private */,
-       3,    0,   81,    2, 0x08,    2 /* Private */,
-       4,    0,   82,    2, 0x08,    3 /* Private */,
-       5,    1,   83,    2, 0x08,    4 /* Private */,
-       8,    1,   86,    2, 0x08,    6 /* Private */,
-       9,    1,   89,    2, 0x08,    8 /* Private */,
-      12,    0,   92,    2, 0x08,   10 /* Private */,
-      13,    0,   93,    2, 0x08,   11 /* Private */,
-      14,    0,   94,    2, 0x08,   12 /* Private */,
-      15,    0,   95,    2, 0x08,   13 /* Private */,
-      16,    0,   96,    2, 0x08,   14 /* Private */,
+       1,    0,   86,    2, 0x08,    1 /* Private */,
+       3,    0,   87,    2, 0x08,    2 /* Private */,
+       4,    0,   88,    2, 0x08,    3 /* Private */,
+       5,    1,   89,    2, 0x08,    4 /* Private */,
+       8,    1,   92,    2, 0x08,    6 /* Private */,
+       9,    1,   95,    2, 0x08,    8 /* Private */,
+      12,    0,   98,    2, 0x08,   10 /* Private */,
+      13,    0,   99,    2, 0x08,   11 /* Private */,
+      14,    0,  100,    2, 0x08,   12 /* Private */,
+      15,    0,  101,    2, 0x08,   13 /* Private */,
+      16,    0,  102,    2, 0x08,   14 /* Private */,
+      17,    0,  103,    2, 0x08,   15 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
@@ -94,6 +97,7 @@ static const uint qt_meta_data_MainWindow[] = {
     QMetaType::Void, 0x80000000 | 6,    7,
     QMetaType::Void, 0x80000000 | 6,    7,
     QMetaType::Void, 0x80000000 | 10,   11,
+    QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -120,6 +124,7 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 8: _t->on_buttonRender_clicked(); break;
         case 9: _t->on_buttonSaveJson_clicked(); break;
         case 10: _t->on_buttonLoadJson_clicked(); break;
+        case 11: _t->on_buttonEmpty_clicked(); break;
         default: ;
         }
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
@@ -144,7 +149,7 @@ const QMetaObject MainWindow::staticMetaObject = { {
     nullptr,
 qt_incomplete_metaTypeArray<qt_meta_stringdata_MainWindow_t
 , QtPrivate::TypeAndForceComplete<MainWindow, std::true_type>
-, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<QListWidgetItem *, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<QListWidgetItem *, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<const QModelIndexList &, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>
+, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<QListWidgetItem *, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<QListWidgetItem *, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<const QModelIndexList &, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>
 
 
 >,
@@ -171,13 +176,13 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 11)
+        if (_id < 12)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 11;
+        _id -= 12;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 11)
+        if (_id < 12)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 11;
+        _id -= 12;
     }
     return _id;
 }

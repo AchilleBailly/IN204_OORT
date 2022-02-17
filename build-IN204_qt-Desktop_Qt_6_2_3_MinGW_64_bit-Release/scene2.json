@@ -1,0 +1,76 @@
+[
+    {
+        "label": "Glass ",
+        "material": {
+            "absorption": {
+                "x": 0.2,
+                "y": 0.1,
+                "z": 0.1
+            },
+            "ior": 1.5,
+            "reflectivity": 0.05,
+            "type": "transparent"
+        },
+        "position": {
+            "x": -2.0,
+            "y": 0.0,
+            "z": -20.0
+        },
+        "radius": 2.0,
+        "type": "Sphere"
+    },
+    {
+        "label": "Diffuse",
+        "material": {
+            "albedo": {
+                "x": 0.8,
+                "y": 0.1,
+                "z": 0.1
+            },
+            "type": "diffuse"
+        },
+        "position": {
+            "x": 2.0,
+            "y": 0.0,
+            "z": -20.0
+        },
+        "radius": 2.0,
+        "type": "Sphere"
+    },
+    {
+        "label": "Light",
+        "material": {
+            "color": {
+                "x": 3.0,
+                "y": 3.0,
+                "z": 3.0
+            },
+            "type": "lightsource"
+        },
+        "position": {
+            "x": 0.0,
+            "y": 6.0,
+            "z": -17.0
+        },
+        "radius": 2.0,
+        "type": "Sphere"
+    },
+    {
+        "label": "Ground",
+        "material": {
+            "albedo": {
+                "x": 0.8,
+                "y": 0.1,
+                "z": 0.1
+            },
+            "type": "diffuse"
+        },
+        "position": {
+            "x": 0.0,
+            "y": -10002.0,
+            "z": -20.0
+        },
+        "radius": 10000.0,
+        "type": "Sphere"
+    }
+]

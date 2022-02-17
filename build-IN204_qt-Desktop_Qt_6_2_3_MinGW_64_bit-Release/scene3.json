@@ -1,0 +1,114 @@
+[
+    {
+        "label": "Ground ",
+        "material": {
+            "albedo": {
+                "x": 0.5,
+                "y": 0.5,
+                "z": 0.55
+            },
+            "fuzz": 0.05,
+            "type": "metal"
+        },
+        "position": {
+            "x": 0.0,
+            "y": -10000.0,
+            "z": -20.0
+        },
+        "radius": 10000.0,
+        "type": "Sphere"
+    },
+    {
+        "label": "Light ",
+        "material": {
+            "color": {
+                "x": 2.2,
+                "y": 2.0,
+                "z": 2.0
+            },
+            "type": "lightsource"
+        },
+        "position": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 30.0
+        },
+        "radius": 7.0,
+        "type": "Sphere"
+    },
+    {
+        "label": "diffuse",
+        "material": {
+            "albedo": {
+                "x": 0.7,
+                "y": 0.1,
+                "z": 0.1
+            },
+            "type": "diffuse"
+        },
+        "position": {
+            "x": 0.0,
+            "y": 2.0,
+            "z": 0.0
+        },
+        "radius": 2.0,
+        "type": "Sphere"
+    },
+    {
+        "label": "Transparent",
+        "material": {
+            "absorption": {
+                "x": 0.1,
+                "y": 0.2,
+                "z": 0.1
+            },
+            "ior": 1.5,
+            "reflectivity": 0.1,
+            "type": "transparent"
+        },
+        "position": {
+            "x": 4.0,
+            "y": 2.0,
+            "z": 0.0
+        },
+        "radius": 2.0,
+        "type": "Sphere"
+    },
+    {
+        "label": "metal ",
+        "material": {
+            "albedo": {
+                "x": 0.8,
+                "y": 0.2,
+                "z": 0.0
+            },
+            "fuzz": 0.01,
+            "type": "metal"
+        },
+        "position": {
+            "x": -4.0,
+            "y": 2.0,
+            "z": 0.0
+        },
+        "radius": 2.0,
+        "type": "Sphere"
+    },
+    {
+        "label": "Skybox ",
+        "material": {
+            "color": {
+                "x": 0.5,
+                "y": 0.5,
+                "z": 0.5
+            },
+            "type": "lightsource"
+        },
+        "position": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+        },
+        "radius": 10000.0,
+        "type": "Sphere"
+    }
+]
